@@ -26,12 +26,14 @@ Jasper's Documentation
   <% #end %>
   
 <hr>
-	<font color=green>
       <% flash.each do |key, value| %>
 	      <% if value != notice %>
-    	    <div class="alert alert-<%= key %>"><%= value %></div>
+	      	<% if key == :error %>
+    	      <div class="alert alert-<%= key %>"><font color=red><%= value %></font></div>
+	        <% else %>
+    	      <div class="alert alert-<%= key %>"><font color=green><%= value %></font></div>
+	        <% end %>
 	      <% end %>
       <% end %>
-  </font>
     
   

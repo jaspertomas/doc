@@ -81,4 +81,26 @@ class TopicsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def move
+    parent_id=params[:parent_id]
+      
+    #if no topic id given, throw flash error
+    if parent_id==""
+      flash[:error]="Error moving topic to new parent topic: new parent topic id required"
+      return redirect_to request.referer
+    end
+      
+    #if topic not found, throw flash error
+    begin
+      @parent = Topic.find(parent_id)
+    rescue
+      flash[:error]="Topic with id #{params[:parent_id]} not found"
+      return redirect_to request.referer
+    end
+        
+    @topic = Topic.find(params[:id])
+    @topic.update_attributes(parent_id:@parent.id)
+    redirect_to request.referer
+  end
 end

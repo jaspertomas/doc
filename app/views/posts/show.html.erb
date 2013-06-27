@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Topic:
-  <%= @post.topic %>
+  <b>Topic:</b>
+  <%= link_to @post.topic, @post.topic %>
+   <br><%=form_tag posts_move_path, :method => :post do%>
+  Move to topic id: <%= text_field_tag :topic_id, "", size:1%>
+  <%= hidden_field_tag "id", @post.id%>
+  <%= submit_tag "Move", data: { confirm: 'Are you sure?' } %> (Current topic_id: <%=@post.topic_id%>)
+ <%end%>
 </p>
 
 <p>
@@ -12,7 +17,8 @@
 
 <p>
   <b>Content:</b>
-  <%= @post.content %>
+  
+  <%= simple_format(@post.content) %>
 </p>
 
 <p>

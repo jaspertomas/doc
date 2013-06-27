@@ -1,9 +1,10 @@
 Doc::Application.routes.draw do
   resources :topics
+  post "topics/move"
 
 
   resources :posts
-
+  post "posts/move"
 
    root :to => 'static_pages#index'
   get "static_pages/index"

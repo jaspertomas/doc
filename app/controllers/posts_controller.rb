@@ -82,4 +82,26 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def move
+    topic_id=params[:topic_id]
+      
+    #if no topic id given, throw flash error
+    if topic_id==""
+      flash[:error]="Error moving post to new topic: new topic id required"
+      return redirect_to request.referer
+    end
+      
+    #if topic not found, throw flash error
+    begin
+      @topic = Topic.find(topic_id)
+    rescue
+      flash[:error]="Topic with id #{params[:topic_id]} not found"
+      return redirect_to request.referer
+    end
+        
+    @post = Post.find(params[:id])
+    @post.update_attributes(topic_id: @topic.id)
+    redirect_to request.referer
+  end
 end

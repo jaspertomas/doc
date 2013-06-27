@@ -17,6 +17,11 @@
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'New Child Topic', new_topic_path+"?parent_id=#{@topic.id.to_s}" %> |
 <%= link_to 'New Post', new_post_path+"?topic_id=#{@topic.id.to_s}" %> |
+ <%=form_tag topics_move_path, :method => :post do%>
+  Move to topic id: <%= text_field_tag :parent_id, "", size:1%>
+  <%= hidden_field_tag "id", @topic.id%>
+  <%= submit_tag "Move", data: { confirm: 'Are you sure?' } %> (Current parent_id: <%=@topic.parent_id%>)
+ <%end%>
 
 <hr>
 
