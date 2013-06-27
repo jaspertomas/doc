@@ -1,8 +1,10 @@
+<!--breadcrumbs-->
 	<% @topic.ancestors.each do |ancestor|%>
 	 > <%=link_to ancestor, ancestor%> 
 	<%end%>
 	> <b><%= link_to @topic.to_s, topic_path(@topic) %> </b> 
-
+<!--end breadcrumbs-->
+<hr>
 <p id="notice"><%= notice %></p>
 
 <p>
