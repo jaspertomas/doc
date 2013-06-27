@@ -1,11 +1,10 @@
 
 
-<table>
+<table border=1>
   <tr>
     <th>Name</th>
     <th>Content</th>
     <th>Category</th>
-    <th>Topic</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,9 +13,8 @@
 <% @topic.posts.each do |post| %>
   <tr>
     <td><%= post.name %></td>
-    <td><%= post.content %></td>
-    <td><%= post.category_id %></td>
-    <td><%= post.topic_id %></td>
+    <td><%= post.content.size > 30 ? post.content[0..29]+"..." : post.content[0..29] %></td>
+    <td><%= post.category %></td>
     <td><%= link_to 'Show', post %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,4 +23,4 @@
 </table>
 
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path+"?topic_id=#{@topic.id.to_s}" %>
