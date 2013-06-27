@@ -24,8 +24,10 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
+    category=Category.find_by_is_default(true)
     @post = Post.new
     @post.topic_id=params[:topic_id]
+    @post.category_id=category.id if category!=nil
     @post.name=DateTime.now.to_formatted_s(:long)
       
     respond_to do |format|
