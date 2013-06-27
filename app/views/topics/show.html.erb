@@ -10,13 +10,19 @@
   <%= @topic.name %>
 </p>
 
-<p>
-  <b>Parent:</b>
-  <%= @topic.parent_id %>
-</p>
 
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to 'New Child Topic', new_topic_path+"?parent_id=#{@topic.id.to_s}" %> |
+<%= link_to 'New Post', new_post_path+"?topic_id=#{@topic.id.to_s}" %> |
 
-<br><br><%= link_to 'New Child Topic', new_topic_path+"?parent_id=#{@topic.id.to_s}" %>
+<hr>
+
+<b>Posts</b>
+<br><%=render 'showposts'%>
+
+<hr>
+
+<b>Child Topics</b>
+<br><%=render 'showchildren'%>
+

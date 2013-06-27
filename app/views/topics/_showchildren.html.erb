@@ -1,0 +1,23 @@
+
+
+<table border=1>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @topic.children.each do |topic| %>
+  <tr>
+    <td><%= topic.name %></td>
+    <td><%= link_to 'Show', topic %></td>
+    <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
+    <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+
+
+<%= link_to 'New Child Topic', new_topic_path+"?parent_id=#{@topic.id.to_s}" %>

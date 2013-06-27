@@ -25,7 +25,9 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-
+    @post.topic_id=params[:topic_id]
+    @post.name=DateTime.now.to_formatted_s(:long)
+      
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
