@@ -12,5 +12,54 @@ class Topic < ActiveRecord::Base
   def to_s
     self.name
   end
+
+
+  def lineagehash
+    lineage={}
+    topic=self
+    
+    begin
+      lineage[topic.type_id.to_sym]=topic
+      topic = topic.parent
+    end while not topic.nil?  
+      
+    lineage
+  end
+  def lineage
+    lineage=[]
+    topic=self
+    
+    begin
+      lineage << topic
+      topic = topic.parent
+    end while not topic.nil?  
+      
+    lineage.reverse  
+  end
+  
+  def lineage_ids
+    array=[]
+    self.lineage.each do |ancestor|
+       array << ancestor.id
+    end
+    return array
+  end  
+  
+  def ancestors
+    if parent
+      parent.lineage
+    else
+      []
+    end
+  end  
+  def ancestors_ids
+    array=[]
+    if parent
+      parent.lineage.each do |ancestor|
+         array << ancestor.id
+      end
+    end
+    return array
+  end  
   
 end
