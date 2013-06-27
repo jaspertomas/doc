@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @topic.name %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%= @topic.parent_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>
+
+<br><br><%= link_to 'New Child Topic', new_topic_path+"?parent_id=#{@topic.id.to_s}" %>

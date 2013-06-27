@@ -1,0 +1,37 @@
+<h1>
+Jasper's Documentation 
+</h1>
+
+  <% #if signed_in? %>
+<table width=100%>
+<tr>
+<td>
+
+<%= link_to "Home", static_pages_index_path %>
+|
+<%= link_to "Topics", topics_path %>
+|
+<%= link_to "Posts", posts_path %>
+|
+<%= link_to "Categories", categories_path %>
+
+
+</td>
+
+</tr>
+<table>
+
+    <% #else %>
+  <%#= link_to "Sign in", signin_path %>
+  <% #end %>
+  
+<hr>
+	<font color=green>
+      <% flash.each do |key, value| %>
+	      <% if value != notice %>
+    	    <div class="alert alert-<%= key %>"><%= value %></div>
+	      <% end %>
+      <% end %>
+  </font>
+    
+  
