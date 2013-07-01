@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> 
-
-<p>
-  <b>Category:</b>
-  <%= @post.category%>
-</p>
+<%= link_to 'Edit', edit_post_path(@post) %> | <%= link_to 'Back', @post.topic %>
 
 <p>
   <b>Topic:</b>
@@ -25,10 +20,16 @@
 <p>
   <b>Content:</b>
   
-  <%= simple_format(@post.content) %>
+  <table border=1><tr><td><%= simple_format(@post.content) %></td></tr></table>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @post.category%>
 </p>
 
 
 
-<%= link_to 'Edit', edit_post_path(@post) %> 
+
+<%= link_to 'Edit', edit_post_path(@post) %> | <%= link_to 'Back', @post.topic %>
 
