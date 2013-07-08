@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :content
       t.integer :category_id
       t.integer :topic_id
+      t.integer :sort_order, default: 0
 
       t.timestamps
     end

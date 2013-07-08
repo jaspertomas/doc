@@ -10,7 +10,7 @@
     <th></th>
   </tr>
 
-<% @topic.posts.each do |post| %>
+<% @topic.posts.sort! { |a,b| b.sort_order <=> a.sort_order }.each do |post| %>
   <tr>
     <td><%= post.name %></td>
     <td><%= post.content.size > 30 ? post.content[0..29]+"..." : post.content[0..29] %></td>
@@ -18,6 +18,7 @@
     <td><%= link_to 'Show', post %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%#= post.sort_order %></td>
   </tr>
 <% end %>
 </table>

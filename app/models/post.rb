@@ -12,7 +12,7 @@
 #
 
 class Post < ActiveRecord::Base
-  attr_accessible :category_id, :content, :name, :topic_id
+  attr_accessible :category_id, :content, :name, :topic_id, :sort_order
   belongs_to :category
   belongs_to :topic
   validate :name, presence: true
