@@ -10,6 +10,8 @@
 #
 
 class Topic < ActiveRecord::Base
+  acts_as_commentable 
+  
   attr_accessible :name, :parent_id
   validates :name, :presence=> true
   has_many :posts

@@ -33,3 +33,15 @@
 <b>Child Topics</b>
 <br><%=render 'showchildren'%>
 
+<hr>
+<b>Comments:</b>
+<%= form_tag "/topics/add_new_comment" do %>
+<%= hidden_field_tag "id", @topic.id %>
+<%= text_area_tag "comment[comment]", nil, {rows:5,cols:50} %>
+<br><%= submit_tag "Post Comment" %>
+<% end %>
+
+<% @topic.comments.each do |comment| %>
+<p><%=comment.user%> says: <%=comment.comment%> (<%= link_to 'delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %>)</p>
+
+<% end %>

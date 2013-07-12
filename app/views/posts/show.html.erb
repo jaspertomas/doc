@@ -50,5 +50,5 @@
 <% end %>
 
 <% @post.comments.each do |comment| %>
-<p><%=comment.user%> says: <%=comment.comment%></p>
+<p><%=comment.user%> says: <%=comment.comment%> (<%= link_to 'delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %>)</p>
 <% end %>

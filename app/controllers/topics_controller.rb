@@ -103,4 +103,11 @@ class TopicsController < ApplicationController
     @topic.update_attributes(parent_id:@parent.id)
     redirect_to request.referer
   end
+
+  def add_new_comment
+    topic = Topic.find(params[:id])
+    topic.comments << Comment.new(params[:comment])
+    redirect_to :action => :show, :id => topic
+  end
+
 end
