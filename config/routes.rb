@@ -1,4 +1,6 @@
 Doc::Application.routes.draw do
+  match "/posts/add_new_comment" => "posts#add_new_comment", :as => "add_new_comment_to_posts", :via => [:post]
+    
   resources :topics
   post "topics/move"
 

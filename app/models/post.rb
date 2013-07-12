@@ -12,6 +12,8 @@
 #
 
 class Post < ActiveRecord::Base
+  acts_as_commentable 
+  
   attr_accessible :category_id, :content, :name, :topic_id, :sort_order
   belongs_to :category
   belongs_to :topic

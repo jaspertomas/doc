@@ -42,3 +42,6 @@ group :development do
 end
 
 gem 'thin'
+
+gem 'acts_as_commentable', '3.0.1'
+

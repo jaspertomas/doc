@@ -107,4 +107,11 @@ class PostsController < ApplicationController
     @post.update_attributes(topic_id: @topic.id)
     redirect_to request.referer
   end
+
+  def add_new_comment
+    post = Post.find(params[:id])
+    post.comments << Comment.new(params[:comment])
+    redirect_to :action => :show, :id => post
+  end
+
 end
