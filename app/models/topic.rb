@@ -11,7 +11,7 @@
 
 class Topic < ActiveRecord::Base
   attr_accessible :name, :parent_id
-  validate :name, :presence=> true
+  validates :name, :presence=> true
   has_many :posts
   belongs_to :parent, :class_name => "Topic", :foreign_key => 'parent_id'
   has_many :children, :class_name => "Topic", :foreign_key => 'parent_id'
