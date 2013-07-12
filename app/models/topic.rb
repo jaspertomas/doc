@@ -12,11 +12,12 @@
 class Topic < ActiveRecord::Base
   acts_as_commentable 
   
-  attr_accessible :name, :parent_id
+  attr_accessible :name, :parent_id, :category_id, :content, :sort_order
   validates :name, :presence=> true
   has_many :posts
   belongs_to :parent, :class_name => "Topic", :foreign_key => 'parent_id'
   has_many :children, :class_name => "Topic", :foreign_key => 'parent_id'
+  belongs_to :category
 
   def is_root?
     self.parent_id==nil || self.parent_id==0

@@ -12,6 +12,21 @@
   <%= @topic.name %>
 </p>
 
+<p>
+  <b>Content:</b>
+  
+  <table border=1><tr><td><%= simple_format(@topic.content) %></td></tr></table>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @topic.category%>
+</p>
+
+<p>
+  <b>Sort Order:</b>
+  <%= @topic.sort_order%>
+</p>
 
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |

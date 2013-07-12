@@ -113,5 +113,20 @@ class PostsController < ApplicationController
     post.comments << Comment.new(params[:comment])
     redirect_to :action => :show, :id => post
   end
+  
+  def convert_to_topic
+    post = Post.find(params[:id])
 
+    topic=Topic.create(:name=>post.name, :parent_id=>post.topic_id, :category_id=>post.category_id, :content=>post.content, :sort_order=>post.sort_order)
+    post.comments.each do |comment|
+      comment.update_attributes(commentable_id: topic.id, commentable_type: "Topic")
+    end  
+    
+    #a refresh is needed for the comments not to be deleted along with the post
+    post = Post.find(params[:id])
+    post.destroy
+     
+    redirect_to :controller => 'topics', :action => :show, :id => topic
+  end
+  
 end

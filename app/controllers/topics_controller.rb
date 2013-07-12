@@ -24,8 +24,12 @@ class TopicsController < ApplicationController
   # GET /topics/new
   # GET /topics/new.json
   def new
+    category=Category.find_by_is_default(true)
     @topic = Topic.new
     @topic.parent_id=params[:parent_id]
+    @topic.category_id=category.id if category!=nil
+    @topic.name=DateTime.now.to_formatted_s(:long)
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -77,7 +81,7 @@ class TopicsController < ApplicationController
     @topic.destroy
 
     respond_to do |format|
-      format.html { redirect_to topics_url }
+      format.html { redirect_to @topic.parent }
       format.json { head :no_content }
     end
   end

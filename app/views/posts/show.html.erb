@@ -52,3 +52,10 @@
 <% @post.comments.each do |comment| %>
 <p><%=comment.user%> says: <%=comment.comment%> (<%= link_to 'delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %>)</p>
 <% end %>
+
+<hr>
+<b>Convert to Topic:</b>
+<%= form_tag "/posts/convert_to_topic" do %>
+<%= hidden_field_tag "id", @post.id %>
+<br><%= submit_tag "Convert to Topic" %>
+<% end %>
