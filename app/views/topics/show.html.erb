@@ -39,16 +39,6 @@
  <%end%>
 
 <hr>
-
-<b>Posts</b>
-<br><%=render 'showposts'%>
-
-<hr>
-
-<b>Child Topics</b>
-<br><%=render 'showchildren'%>
-
-<hr>
 <b>Comments:</b>
 <%= form_tag "/topics/add_new_comment" do %>
 <%= hidden_field_tag "id", @topic.id %>
@@ -60,3 +50,14 @@
 <p><%=comment.user%> says: <%=comment.comment%> (<%= link_to 'delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %>)</p>
 
 <% end %>
+
+<hr>
+
+<b>Child Topics</b>
+<br><%=render 'showchildren'%>
+
+<hr>
+
+<b>Posts</b>
+<br><%=render 'showposts'%>
+

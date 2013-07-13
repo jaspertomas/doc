@@ -19,6 +19,14 @@
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%#= post.sort_order %></td>
+    <!--td>
+		<%#= form_tag "/posts/convert_to_topic" do %>
+		<%#= hidden_field_tag "id", post.id %>
+		<br><%#= submit_tag "Convert to Topic" %>
+		<%# end %>
+    </td-->
+    
+    
   </tr>
 <% end %>
 </table>

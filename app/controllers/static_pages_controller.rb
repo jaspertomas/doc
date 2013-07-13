@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def index
+    redirect_to Topic.first
   end
 
   def help

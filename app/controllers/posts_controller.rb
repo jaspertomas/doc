@@ -127,6 +127,7 @@ class PostsController < ApplicationController
     post.destroy
      
     redirect_to :controller => 'topics', :action => :show, :id => topic
+    #redirect_to request.referer
   end
   
 end
