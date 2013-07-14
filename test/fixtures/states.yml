@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  is_default: false
+  sort_order: 1
+  fortype: MyString
+
+two:
+  name: MyString
+  is_default: false
+  sort_order: 1
+  fortype: MyString

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @state.name %>
+</p>
+
+<p>
+  <b>Is default:</b>
+  <%= @state.is_default %>
+</p>
+
+<p>
+  <b>Sort order:</b>
+  <%= @state.sort_order %>
+</p>
+
+<p>
+  <b>Fortype:</b>
+  <%= @state.fortype %>
+</p>
+
+
+<%= link_to 'Edit', edit_state_path(@state) %> |
+<%= link_to 'Back', states_path %>

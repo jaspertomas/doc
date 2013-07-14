@@ -1,4 +1,7 @@
 Doc::Application.routes.draw do
+  resources :states
+
+
   match "/posts/convert_to_topic" => "posts#convert_to_topic", :as => "convert_post_to_topic", :via => [:post]
   resources :comments
     

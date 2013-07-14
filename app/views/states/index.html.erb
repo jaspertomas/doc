@@ -1,0 +1,29 @@
+<h1>Listing states</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Is default</th>
+    <th>Sort order</th>
+    <th>Fortype</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @states.each do |state| %>
+  <tr>
+    <td><%= state.name %></td>
+    <td><%= state.is_default %></td>
+    <td><%= state.sort_order %></td>
+    <td><%= state.fortype %></td>
+    <td><%= link_to 'Show', state %></td>
+    <td><%= link_to 'Edit', edit_state_path(state) %></td>
+    <td><%= link_to 'Destroy', state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New State', new_state_path %>
