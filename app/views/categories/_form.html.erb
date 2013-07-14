@@ -17,6 +17,13 @@
   </div>
 
   <div class="field">
+    Type<br />
+    <%#= f.text_field :fortype %>
+    <%= select "category", "fortype", ["Topic", 'Post', 'Any'].map {|name| [name]} %>
+    
+  </div>
+
+  <div class="field">
     <%= f.label :is_default %><br />
     <%= f.check_box :is_default %>
   </div>

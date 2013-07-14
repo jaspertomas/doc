@@ -14,7 +14,7 @@
   <div class="field">
     <%= f.label :parent_id %>: 
     <%= f.hidden_field :parent_id %>
-    <b><%= @topic.parent %></b>
+    <b><%= link_to @topic.parent, @topic.parent %></b>
   </div>
   <div class="field">
     <%= f.label :name %><br />
@@ -26,6 +26,7 @@
   </div>
   <div class="field">
     <%= f.label :category_id %><br />
+     <%#= f.collection_select :category_id, Category.fortopics.sort! { |a,b| a.sort_order <=> b.sort_order }, :id, :name, :prompt => "Choose one"%>
      <%= f.collection_select :category_id, Category.all.sort! { |a,b| a.sort_order <=> b.sort_order }, :id, :name, :prompt => "Choose one"%>
   </div>
   <div class="field">

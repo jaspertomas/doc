@@ -30,6 +30,7 @@ class PostsController < ApplicationController
     @post.topic_id=params[:topic_id]
     @post.category_id=category.id if category!=nil
     @post.name=DateTime.now.to_formatted_s(:long)
+    @post.sort_order=0
       
     respond_to do |format|
       format.html # new.html.erb

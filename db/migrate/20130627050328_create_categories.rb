@@ -4,6 +4,7 @@ class CreateCategories < ActiveRecord::Migration
       t.string :name
       t.boolean :is_default
       t.integer :sort_order, default: 0
+      t.string :fortype, limit:10
 
       t.timestamps
     end

@@ -4,6 +4,7 @@
   <tr>
     <td>ID</td>
     <td>Name</td>
+    <td>Category</td>
     <td></td>
     <td></td>
   </tr>
@@ -12,6 +13,7 @@
   <tr>
     <td><%= topic.id %></td>
     <td><%= link_to topic.name, topic %></td>
+    <td><%= link_to topic.category, topic %></td>
     <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
     <td><%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td>

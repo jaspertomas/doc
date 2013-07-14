@@ -26,6 +26,7 @@
   </div>
   <div class="field">
     <%= f.label :category_id %><br />
+     <%#= f.collection_select :category_id, Category.forposts.sort! { |a,b| a.sort_order <=> b.sort_order }, :id, :name, :prompt => "Choose one"%>
      <%= f.collection_select :category_id, Category.all.sort! { |a,b| a.sort_order <=> b.sort_order }, :id, :name, :prompt => "Choose one"%>
   </div>
   <div class="field">

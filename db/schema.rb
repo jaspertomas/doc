@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130714032611) do
+ActiveRecord::Schema.define(:version => 20130714040416) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(:version => 20130714032611) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
     t.boolean  "is_default"
     t.integer  "sort_order"
+    t.string   "fortype",    :limit => 10
   end
 
   create_table "comments", :force => true do |t|
