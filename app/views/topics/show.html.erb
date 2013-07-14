@@ -7,36 +7,58 @@
 <hr>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @topic.name %>
-</p>
-
-<p>
-  <b>Content:</b>
-  
-  <table border=1><tr><td><%= simple_format(@topic.content) %></td></tr></table>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @topic.category%>
-</p>
-
-<p>
-  <b>Sort Order:</b>
-  <%= @topic.sort_order%>
-</p>
-
-
+<b>
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'New Child Topic', new_topic_path+"?parent_id=#{@topic.id.to_s}" %> |
 <%= link_to 'New Post', new_post_path+"?topic_id=#{@topic.id.to_s}" %> |
+</b>
  <%=form_tag topics_move_path, :method => :post do%>
   Move to topic id: <%= text_field_tag :parent_id, "", size:1%>
   <%= hidden_field_tag "id", @topic.id%>
   <%= submit_tag "Move", data: { confirm: 'Are you sure?' } %> (Current parent_id: <%=@topic.parent_id%>)
  <%end%>
+
+<p>
+  Name:
+  <b><%= @topic.name %></b>
+</p>
+
+<p>
+  Content:
+  
+  <table border=1><tr><td><%= simple_format(@topic.content) %></td></tr></table>
+</p>
+
+<p>
+  Category:
+   <%= @topic.category%>
+</p>
+
+<p>
+  Sort Order:
+  <%= @topic.sort_order%>
+</p>
+
+<b>
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'New Child Topic', new_topic_path+"?parent_id=#{@topic.id.to_s}" %> |
+<%= link_to 'New Post', new_post_path+"?topic_id=#{@topic.id.to_s}" %> |
+</b>
+ <%=form_tag topics_move_path, :method => :post do%>
+  Move to topic id: <%= text_field_tag :parent_id, "", size:1%>
+  <%= hidden_field_tag "id", @topic.id%>
+  <%= submit_tag "Move", data: { confirm: 'Are you sure?' } %> (Current parent_id: <%=@topic.parent_id%>)
+ <%end%>
+
+<hr>
+
+<b>Child Topics</b>
+<br><%=render 'showchildren'%>
+
+<hr>
+
+<b>Posts</b>
+<br><%=render 'showposts'%>
 
 <hr>
 <b>Comments:</b>
@@ -50,14 +72,4 @@
 <p><%=comment.user%> says: <%=comment.comment%> (<%= link_to 'delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %>)</p>
 
 <% end %>
-
-<hr>
-
-<b>Child Topics</b>
-<br><%=render 'showchildren'%>
-
-<hr>
-
-<b>Posts</b>
-<br><%=render 'showposts'%>
 

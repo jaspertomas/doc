@@ -2,18 +2,26 @@
 
 <table border=1>
   <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td>ID</td>
+    <td>Name</td>
+    <td></td>
+    <td></td>
   </tr>
 
 <% @topic.children.sort! { |a,b| b.sort_order <=> a.sort_order }.each do |topic| %>
   <tr>
-    <td><%= topic.name %></td>
-    <td><%= link_to 'Show', topic %></td>
+    <td><%= topic.id %></td>
+    <td><%= link_to topic.name, topic %></td>
     <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-    <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+     <%=form_tag topics_move_path, :method => :post do%>
+  Move to topic id: <%= text_field_tag :parent_id, "", size:1%>
+  <%= hidden_field_tag "id", topic.id%>
+  <%= submit_tag "Move", data: { confirm: 'Are you sure?' } %> 
+ <%end%>
+    
+    </td>
   </tr>
 <% end %>
 </table>

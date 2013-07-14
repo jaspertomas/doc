@@ -9,7 +9,7 @@
 #
 
 class Category < ActiveRecord::Base
-  attr_accessible :name, :is_default
+  attr_accessible :name, :is_default, :sort_order
   has_many :posts
   
 

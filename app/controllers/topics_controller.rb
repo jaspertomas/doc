@@ -29,6 +29,7 @@ class TopicsController < ApplicationController
     @topic.parent_id=params[:parent_id]
     @topic.category_id=category.id if category!=nil
     @topic.name=DateTime.now.to_formatted_s(:long)
+    @topic.sort_order=0
 
 
     respond_to do |format|

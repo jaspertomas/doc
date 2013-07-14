@@ -5,6 +5,17 @@
   <%= @category.name %>
 </p>
 
+<p>
+  <b>Sort Order:</b>
+  <%= @category.sort_order%>
+</p>
+
+
+<p>
+  <b>Is Default:</b>
+  <%= @category.is_default%>
+</p>
+
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

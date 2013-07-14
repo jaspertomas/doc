@@ -2,12 +2,12 @@
 
 <table border=1>
   <tr>
-    <th>Name</th>
-    <th>Content</th>
-    <th>Category</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td>Name</td>
+    <td>Content</td>
+    <td>Category</td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 
 <% @topic.posts.sort! { |a,b| b.sort_order <=> a.sort_order }.each do |post| %>

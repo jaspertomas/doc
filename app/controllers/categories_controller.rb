@@ -25,6 +25,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new.json
   def new
     @category = Category.new
+    @category.sort_order=0
 
     respond_to do |format|
       format.html # new.html.erb
