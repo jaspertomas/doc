@@ -24,8 +24,10 @@
     <%= f.number_field :sort_order %>
   </div>
   <div class="field">
-    <%= f.label :fortype %><br />
-    <%= f.text_field :fortype %>
+    Type<br />
+    <%#= f.text_field :category_id %>
+    <%= f.collection_select :category_id, Category.all.sort! { |a,b| a.sort_order <=> b.sort_order }, :id, :name, :prompt => "Choose one"%>
+    
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -4,7 +4,8 @@ class CreateStates < ActiveRecord::Migration
       t.string :name
       t.boolean :is_default
       t.integer :sort_order
-      t.string :fortype
+      #t.string :fortype
+      t.integer :category_id
 
       t.timestamps
     end

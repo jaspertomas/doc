@@ -6,6 +6,8 @@ class CreateTopics < ActiveRecord::Migration
       t.string :content
       t.integer :category_id
       t.integer :sort_order, default: 0
+      t.integer :state_id
+
 
       t.timestamps
     end

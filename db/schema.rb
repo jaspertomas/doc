@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130714040416) do
+ActiveRecord::Schema.define(:version => 20130714050637) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -60,6 +60,25 @@ ActiveRecord::Schema.define(:version => 20130714040416) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "sort_order"
+    t.integer  "state_id"
+  end
+
+  create_table "states", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_default"
+    t.integer  "sort_order"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "statuses", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_default"
+    t.integer  "sort_order",               :default => 0
+    t.string   "fortype",    :limit => 10
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   create_table "topics", :force => true do |t|
@@ -70,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20130714040416) do
     t.integer  "category_id"
     t.string   "content"
     t.integer  "sort_order"
+    t.integer  "state_id"
   end
 
 end
