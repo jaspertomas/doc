@@ -31,6 +31,7 @@ class PostsController < ApplicationController
     @post.category_id=category.id if category!=nil
     @post.name=DateTime.now.to_formatted_s(:long)
     @post.sort_order=0
+    @post.state_id=State.default_for(@post.category).first.id
       
     respond_to do |format|
       format.html # new.html.erb

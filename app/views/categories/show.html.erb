@@ -32,6 +32,7 @@
   <tr>
     <th>Parent</th>
     <th>Name</th>
+    <th>State</th>
     <th></th>
     <th></th>
   </tr>
@@ -40,6 +41,7 @@
   <tr>
     <td><%= link_to topic.parent, topic.parent %></td>
     <td><%= link_to topic.name, topic %></td>
+    <td><%= topic.state %></td>
     <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
     <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -56,6 +58,7 @@
     <th>Name</th>
     <th>Content</th>
     <th>Topic</th>
+    <th>State</th>
     <th></th>
     <th></th>
   </tr>
@@ -66,6 +69,7 @@
     <td><%= link_to post.name, post %></td>
     <td><%= post.content[0..20]+"..." %></td>
     <td><%= link_to post.topic, post.topic %></td>
+    <td><%= post.state %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

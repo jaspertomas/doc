@@ -30,6 +30,14 @@
      <%= f.collection_select :category_id, Category.all.sort! { |a,b| a.sort_order <=> b.sort_order }, :id, :name, :prompt => "Choose one"%>
   </div>
   <div class="field">
+    <%= f.label :state_id %><br />
+    
+    <!--this is updated when category dropdown box is changed, to show states for the selected category. Each category has its own set of states.-->
+    <div id=category_state_select>
+     <%= f.collection_select :state_id, State.for(@topic.category).sort! { |a,b| a.sort_order <=> b.sort_order }, :id, :name%><%# #, :prompt => "Choose one"%>
+    </div>
+  </div>
+  <div class="field">
     <%= f.label :sort_order %><br />
     <%= f.text_field :sort_order %>
   </div>
@@ -37,3 +45,27 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
+
+
+<script>
+$.ajax({
+	url: "http://localhost:2999/categories/get_states/12.json",
+  dataType: 'html',
+  success: function(data) {
+    alert(data);
+    //$('#category_state_select').html("");
+    outputstring1='<select id="topic_state_id" name="topic[state_id]">';
+	outputstring3='</select>';
+	outputstring2='';
+	
+    //'[{"1":"Pending"},{"2":"Complete"}]'
+    
+    
+  }
+});
+
+
+
+</script>

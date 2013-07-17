@@ -5,5 +5,10 @@ class State < ActiveRecord::Base
   validates :category_id, presence: true
   belongs_to :category
 
+  scope :for, lambda{|category| { :conditions => { :category_id => category.id } } }
+  scope :default_for, lambda{|category| { :conditions => { :category_id => category.id, is_default: true } } }
 
+    def to_s
+      name
+    end
 end

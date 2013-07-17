@@ -81,4 +81,18 @@ class CategoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def get_states
+    @category = Category.find(params[:id])
+    @states=[]
+     
+    @category.states.each do |state|
+      @states << {state.id => state.name}
+    end
+
+    respond_to do |format|
+      format.json { render json: @states }
+    end
+  end
+
 end

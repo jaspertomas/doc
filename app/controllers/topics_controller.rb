@@ -30,6 +30,7 @@ class TopicsController < ApplicationController
     @topic.category_id=category.id if category!=nil
     @topic.name=DateTime.now.to_formatted_s(:long)
     @topic.sort_order=0
+    @topic.state_id=State.default_for(@topic.category).first.id
 
 
     respond_to do |format|
